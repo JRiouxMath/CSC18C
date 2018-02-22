@@ -1,0 +1,70 @@
+/*
+ * Jeanine Rioux
+ * 18B 2/21/18
+ */
+package simpleexpressionreview;
+
+import java.util.Scanner;
+
+public class SimpleExpressionReview {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // declare three integer variables
+        int num1, num2, sum;
+            
+        //declare scanner object for reading input
+        Scanner keyboard = new Scanner(System.in);
+
+        // prompt user for input and store in variables
+        System.out.print("Enter an integer for num1: ");
+        num1 = keyboard.nextInt();
+
+        System.out.print("Enter an integer for num2: ");
+        num2 = keyboard.nextInt();
+            /*
+                // add up the two variables and store in sum
+                sum = num1 + num2;
+
+                // output the result
+                System.out.printf("The sum of %d and %d is %d.\n", num1, num2, sum);
+        
+             */
+        // Prof Conrad went to a new class for the if-else review
+            /*
+                // test num1 and num2
+                if (num1 > num2)
+                {
+                    System.out.printf("%d is greater than %d%n", num1, num2);
+                } // end if
+                else if (num1 < num2)
+                {
+                    System.out.printf("%d is less than %d%n", num1, num2);   
+                } // end else if
+                else
+                {
+                    System.out.printf("%d is equal to %d%n", num1, num2);
+                } // end else
+             */
+         // Prof Conrad then went to a new class for the for loop review
+         sum = 0;
+         for (int count = 1; count <= num1; count++)
+         {
+             sum = sum + count;
+         } // end for loop
+          
+         System.out.printf("The sum is %d: %n", sum);
+         
+         int count = 1;
+         while (count <= num2)
+         {
+             sum += count;
+             count ++;
+         }// end while loop
+         
+         System.out.printf("The sum is %d: %n", sum);
+    }// End main method
+    
+}// end class SimpleExpressionReview
