@@ -1,0 +1,177 @@
+/*
+*  Jeanine Rioux
+* From Prof Conrad's source code;
+*/
+package LinkedList;
+
+public class LinkedList {
+
+    // head node
+    private Node head; // beginning of linked list
+    private Node tail; // end of linked list
+    
+    // keep track of number of items in linked list
+    private int listCount;
+
+    // default constructor to create an empty linked list
+    public LinkedList() {
+        head = null;
+        tail = null;
+        listCount = 0; 
+    } //end zero-arg constructor
+
+    // add a node with the specified element to the end of this list
+    public void add(int dataValue) 
+    {
+        Node temp = new Node(dataValue); // create our new node        
+        // if head is null, newly created node is head and tail for starters
+        if ( head == null )
+        {
+            head = temp;
+            tail = head;
+        } // end if ( head == null )
+        else
+        {
+            tail.setNext(temp);
+            tail = temp;
+        }// end else
+        listCount++;
+    } //end method add with 1 Param
+
+    // inserts the specified element at the specified position in this list
+    public void add(int dataValue, int indexPosition) 
+    {
+        // to do: 3/22/17       
+        if ( indexPosition == 0 ) // adding to the head
+        {
+            Node temp = new Node(dataValue); // create our new node
+            temp.setNext(head);
+            head=temp;
+            listCount++;
+        } // end if ( indexPosition == 0 )       
+        else if ( indexPosition >= listCount ) //position is the tail, easiest add
+        {
+            this.add(dataValue);
+        }// end else if ( indexPosition >= listCount )
+        else                                    // adding anywhere else
+        {
+            Node previous = null;
+            Node current = head;
+            for(int i=0;i<indexPosition;i++)    // here's the BigO dictator
+            {
+                previous = current;
+                current = current.getNext();
+            }
+            Node temp = new Node(dataValue); // create our new node
+            previous.setNext(temp);
+            temp.setNext(current);
+            listCount++;
+        }  // end else     
+    } // end method add with two param
+
+    // returns the element at the specified index position in this list
+    public int get(int indexPosition)
+    {
+        // index must be 0 or higher
+        if (indexPosition < 0) {
+            throw new IllegalArgumentException();
+        }// end if to prevent illegal retrieval
+
+        Node current = head.getNext();
+        for (int i = 0; i < indexPosition; i++) {
+            if (current.getNext() == null) {
+                return 0;
+            }
+
+            current = current.getNext();
+        }// end for loop
+        return current.getData();
+    } // end method get (int indexPosition)
+    
+    // remove mode from head
+    public int removeFront()
+    {
+        if (head == null)
+            return 0;           //note there will be confusion if value==0 better to throw exception
+        int temp = head.getData();   // to preserve the removed value
+        head = head.getNext();
+        listCount--;
+       
+        return temp;
+    }// end method removeFront
+    
+
+    // removes the node at the specified index position in this list
+    public boolean remove(int indexPosition) 
+    {
+        // to do: 3/22/17
+        listCount--; 
+        return true;
+    } // end method remove with indicated position
+
+    // returns the number of items (elements) in the linked list
+    public int size()
+    {
+        return listCount;
+    }
+
+    // utility method to print out items in linked list
+    public String toString() {
+        Node current = head;
+        String output = "";
+        while (current != null) {
+            output += "[" + current.getData() + "]";
+            current = current.getNext();
+        }
+        return output;
+    }
+
+    // this is a private inner class, only needs to be used by the
+    // public outer linkedlist class
+    private class Node {
+        // next node in the linked list, if null, then end of list
+
+        private Node next;
+        // data element of the node
+        private int data;
+
+        // constructor to create node with empty value
+        public Node() {
+            next = null;
+            data = 0;
+        }
+
+        // constructor to create node with a value in the node
+        public Node(int dataValue) {
+            next = null;
+            data = dataValue;
+        }
+
+        // constructor for if we want to specify a particular node for
+        // the node to point to
+        public Node(int dataValue, Node nextNode) {
+            next = nextNode;
+            data = dataValue;
+        }
+
+        // return the data in the node
+        public int getData() {
+            return data;
+        }
+
+        // set the data in the node to a value
+        public void setData(int dataValue) {
+            data = dataValue;
+        }
+
+        // returns the next node, if any
+        public Node getNext() {
+            return next;
+        }
+
+        // set the next node to point to some other node
+        public void setNext(Node nextNode) {
+            next = nextNode;
+        }
+    }
+}
