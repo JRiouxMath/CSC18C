@@ -1,0 +1,62 @@
+/*
+ * Jeanine Rioux
+ * CSC 18 C
+ * Assignment #4: Stacks
+ * 4/30/18  (1hr 30 min)
+
+ *  Need to resolve exception when there are too many rights.
+    */
+
+package asmt4_stacks_balanced;
+
+import java.util.Scanner;
+
+public class Asmt4_Stacks_Balanced {
+
+    
+    public static void main(String[] args) {
+        String expression = new String();
+        boolean check;
+        Scanner kb = new Scanner(System.in);
+        
+        System.out.println("Enter an expression to determine if it is balanced.");
+        expression = kb.nextLine(); 
+        
+        check = checkIsBalanced(expression);
+        System.out.println(check);
+    }// end method main
+        
+    public static boolean checkIsBalanced(String expr)
+    {
+        char[] temp = expr.toCharArray();
+        Stack <Character> braces = new Stack<Character>();
+
+        for (int i=0; i<temp.length; i++)
+        {
+            if (temp[i] == '(' || temp[i] == '[' || temp[i] == '{')
+                braces.push(temp[i]);
+            else if (temp[i]== ')')
+                if (braces.peek() == '(')
+                    braces.pop();
+                else
+                    return false;
+            else if (temp[i]== ']')
+                if (braces.peek() == '[')
+                    braces.pop();
+                else
+                    return false;
+            else if (temp[i]== '}')
+                if (braces.peek() == '{')
+                    braces.pop();
+                else
+                    return false;
+
+        }// end for loop
+
+        if(braces.pop()!= null)
+            return false;
+    return true;
+    }// end method checkIsBalanced
+
+    
+}
