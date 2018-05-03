@@ -2,14 +2,28 @@
  * Jeanine Rioux
  * CSC 18 C
  * Assignment #4: Stacks
- * 4/30/18  (1hr 30 min)
+ *
 
- *  Need to resolve exception when there are too many rights.
+ * Instructions: Fill out your name under programmer name, the date and time you started the assignment, 
+the date and time you completed the assignment, total hours you dedicated to the assignment (should be
+a minimum of 1 1/2 hours for a good quality, well done assignment - rules of academic honesty apply for
+this), and any constructive comments you have about the assignment (could be things you liked about the 
+assignment; or if you had the opportunity to do the assignment all over again, what would you do 
+differently?) 
+
+Programmer Name:   Jeanine Rioux
+Assignment Start:  4/30/18  (1 hr 30 min)
+Assignment Completion: 5/2/18  (20 min)
+Total Hours for Assignment: 1 hr 50 min
+Comments:  This gave me an opportunity to implement try/catch, which was not something I was comfortable using
+I considered using switch/case and it mightt be fun to revisit it that way to see if it looks more elegant.
+
     */
 
 package asmt4_stacks_balanced;
 
 import java.util.Scanner;
+import java.lang.NullPointerException;
 
 public class Asmt4_Stacks_Balanced {
 
@@ -31,31 +45,46 @@ public class Asmt4_Stacks_Balanced {
         char[] temp = expr.toCharArray();
         Stack <Character> braces = new Stack<Character>();
 
-        for (int i=0; i<temp.length; i++)
+        try
         {
-            if (temp[i] == '(' || temp[i] == '[' || temp[i] == '{')
-                braces.push(temp[i]);
-            else if (temp[i]== ')')
-                if (braces.peek() == '(')
-                    braces.pop();
-                else
-                    return false;
-            else if (temp[i]== ']')
-                if (braces.peek() == '[')
-                    braces.pop();
-                else
-                    return false;
-            else if (temp[i]== '}')
-                if (braces.peek() == '{')
-                    braces.pop();
-                else
-                    return false;
+            for (int i=0; i<temp.length; i++)
+            {
+                if (temp[i] == '(' || temp[i] == '[' || temp[i] == '{')
+                    braces.push(temp[i]);
+                else if (temp[i]== ')')
+                {   
+                    if (braces.peek() == '(')
+                        braces.pop();
+                    else
+                        return false;
+                }// end else if )
+                else if (temp[i]== ']')
+                {    
+                    if (braces.peek() == '[')
+                        braces.pop();
+                    else
+                        return false;
+                }// end else if ]    
+                else if (temp[i]== '}')
+                {    
+                    if (braces.peek() == '{')
+                        braces.pop();
+                    else
+                        return false;
+                }// end else if }   
 
-        }// end for loop
+            }// end for loop
 
-        if(braces.pop()!= null)
+            if(braces.pop()!= null)
+                return false;
+        return true;
+    
+        }// end try block
+        catch(NullPointerException nullPointerException)
+        {
             return false;
-    return true;
+        }//end catch block
+        
     }// end method checkIsBalanced
 
     
