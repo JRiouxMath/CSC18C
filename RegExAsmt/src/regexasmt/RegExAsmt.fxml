@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="392.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="regexasmt.RegExAsmtController">
+   <children>
+      <TextField fx:id="ReplText" layoutX="160.0" layoutY="245.0" prefHeight="31.0" prefWidth="200.0" promptText="Enter the replacement text" />
+      <TextArea fx:id="AltText" focusTraversable="false" layoutX="160.0" layoutY="303.0" prefHeight="153.0" prefWidth="200.0" />
+      <TextArea fx:id="OrigText" focusTraversable="false" layoutX="160.0" layoutY="70.0" prefHeight="153.0" prefWidth="200.0" promptText="Enter the text to be searched" />
+      <TextField fx:id="RegExText" layoutX="160.0" layoutY="26.0" prefHeight="31.0" prefWidth="200.0" promptText="Enter the Regex" />
+      <Label focusTraversable="false" layoutX="14.0" layoutY="31.0" prefHeight="21.0" prefWidth="72.0" text="RegEx" />
+      <Label focusTraversable="false" layoutX="14.0" layoutY="70.0" prefHeight="60.0" prefWidth="72.0" text="Original Text" wrapText="true" />
+      <Label focusTraversable="false" layoutX="14.0" layoutY="239.0" prefHeight="21.0" prefWidth="110.0" text="Replacement" />
+      <Button layoutX="151.0" layoutY="475.0" mnemonicParsing="false" onAction="#ReplButn" text="Replace" />
+      <Label focusTraversable="false" layoutX="14.0" layoutY="303.0" prefHeight="66.0" prefWidth="72.0" text="Altered Text" wrapText="true" />
+   </children>
+</AnchorPane>
