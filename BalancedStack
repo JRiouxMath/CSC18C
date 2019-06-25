@@ -16,7 +16,7 @@ Assignment Start:  4/30/18  (1 hr 30 min)
 Assignment Completion: 5/2/18  (20 min)
 Total Hours for Assignment: 1 hr 50 min
 Comments:  This gave me an opportunity to implement try/catch, which was not something I was comfortable using
-I considered using switch/case and it mightt be fun to revisit it that way to see if it looks more elegant.
+I considered using switch/case and it might be fun to revisit it that way to see if it looks more elegant.
 
     */
 
@@ -88,4 +88,4 @@ public class Asmt4_Stacks_Balanced {
     }// end method checkIsBalanced
 
     
-}
+}//end class implementing a Balanced Stack
